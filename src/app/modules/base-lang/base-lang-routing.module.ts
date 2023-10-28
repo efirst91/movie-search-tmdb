@@ -6,8 +6,8 @@ const routes: Routes = [
     path: ':language',
     children: [
       {
-        path: 'home',
-        loadChildren: () => import('../movie/movie.module').then(m => m.MovieModule)
+        path: 'search',
+        loadChildren: () => import('@modules/search/search.component').then(m => m.SearchComponent)
       },
       {
         path: '**',
