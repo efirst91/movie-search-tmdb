@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {MovieDetailComponent} from "./components/movie-detail/movie-detail.component";
-import {MovieComponent} from "./movie.component";
+import {MovieDetailComponent} from "@modules/movie/components/movie-detail/movie-detail.component";
+import {MovieComponent} from "@modules/movie/movie.component";
 
 
 @NgModule({
@@ -10,10 +9,11 @@ import {MovieComponent} from "./movie.component";
     MovieDetailComponent
   ],
   exports: [
+    MovieComponent,
     MovieDetailComponent
   ],
   imports: [
-    BrowserModule,
+
   ],
   providers: [],
 })
