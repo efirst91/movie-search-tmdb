@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '@modules/main/app-routing.module';
 import { AppComponent } from '@modules/main/app.component';
 import {BaseLangComponent} from "@modules//base-lang/base-lang.component";
+import { HttpClientModule } from '@angular/common/http';
+import { TranslocoRootModule } from '../../config/i18n/transloco-root.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import {BaseLangComponent} from "@modules//base-lang/base-lang.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BaseLangComponent
+    BaseLangComponent,
+    HttpClientModule,
+    TranslocoRootModule
   ],
   providers: [],
   bootstrap: [AppComponent]
