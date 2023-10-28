@@ -23,6 +23,10 @@ const config: Config = {
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
+
+  moduleDirectories: ["<rootDir>/../", "node_modules"],
+  roots: ['<rootDir>'],
+  setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
 };
 
 export default config;
