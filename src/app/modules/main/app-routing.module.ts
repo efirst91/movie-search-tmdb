@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BaseLangComponent} from "./modules/base-lang/base-lang.component";
+import {BaseLangComponent} from "@modules/base-lang/base-lang.component";
 
 const routes: Routes = [
   {

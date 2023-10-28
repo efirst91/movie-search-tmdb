@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import {BaseLangComponent} from "./modules/base-lang/base-lang.component";
+import { AppRoutingModule } from '@modules/main/app-routing.module';
+import { AppComponent } from '@modules/main/app.component';
+import {BaseLangComponent} from "@modules//base-lang/base-lang.component";
 
 @NgModule({
   declarations: [
