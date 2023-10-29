@@ -1,17 +1,30 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {BaseLangComponent} from "@modules/base-lang/base-lang.component";
+
+import {NotFoundComponent} from "@shared/components/not-found/not-found.component";
+import {SearchComponent} from "@modules/search/search.component";
+import {authGuard} from "@core/guards/auth.guard";
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'es/home',
-    pathMatch: "full"
+    path: 'search',
+    canActivate: [authGuard],
+    component: SearchComponent
+  },
+  {
+    path: 'token-acceso',
+    loadComponent: () => import('@modules/token-admin/token-admin.component').then(c => c.TokenAdminComponent)
   },
   {
     path: '',
-    component: BaseLangComponent
+    redirectTo: 'search',
+    pathMatch: 'full'
   },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
+
 
 ];
 
