@@ -15,6 +15,7 @@ const config: Config = {
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
 
+  roots: ['<rootDir>'],
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     "@core/*": "<rootDir>/src/app/core/$1",
@@ -29,8 +30,7 @@ const config: Config = {
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
 
-  moduleDirectories: ["<rootDir>/../", "node_modules"],
-  roots: ['<rootDir>'],
+  moduleDirectories: ["<rootDir>/src/", "node_modules"],
   setupFilesAfterEnv: ["<rootDir>/setup-jest.ts"],
 };
 
