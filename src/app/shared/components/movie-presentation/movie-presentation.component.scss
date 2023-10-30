@@ -1,0 +1,25 @@
+.presentation-card {
+  max-width: 20rem;
+  border-radius: 0.625rem;
+  transition: box-shadow 0.5s ease-in-out;
+  background-color: whitesmoke;
+
+  &:hover{
+    box-shadow: 0 0 5px 5px cornflowerblue;
+  }
+
+  .img {
+    width: 100%;
+    height: 11.25rem;
+    object-fit: contain;
+    object-position: right;
+  }
+
+  .content-card{
+    margin-top: 1rem;
+  }
+
+  .year-value {
+    margin-right: 0.8rem;
+  }
+}
