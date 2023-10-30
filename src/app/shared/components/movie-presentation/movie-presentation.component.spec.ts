@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {TranslocoModule} from "@ngneat/transloco";
+import {MatCardModule} from "@angular/material/card";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 
 import { MoviePresentationComponent } from './movie-presentation.component';
 
@@ -8,7 +11,7 @@ xdescribe('MoviePresentationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MoviePresentationComponent]
+      imports: [CommonModule,MoviePresentationComponent,TranslocoModule,NgOptimizedImage,MatCardModule]
     });
     fixture = TestBed.createComponent(MoviePresentationComponent);
     component = fixture.componentInstance;

@@ -10,11 +10,17 @@ import {MatButtonModule} from "@angular/material/button";
 import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
 import {SnackBarNotificationsService} from "@shared/services/snack-bar-notifications/snack-bar-notifications.service";
 import {Router} from "@angular/router";
+import {TranslocoRootModule} from "@config/i18n/transloco-root.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-token-admin',
   standalone: true,
-  imports: [CommonModule, MatInputModule, MatButtonModule, ReactiveFormsModule, FormsModule, TranslocoModule],
+  imports: [CommonModule,
+    MatInputModule,
+    MatButtonModule, ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule, TranslocoModule, TranslocoRootModule],
   templateUrl: './token-admin.component.html',
   styleUrls: ['./token-admin.component.scss']
 })
@@ -33,7 +39,6 @@ export class TokenAdminComponent {
 
   onUpdateToken(): void {
     console.log('value form -> ', this.tokenControl.value)
-    debugger
     const token = this.tokenControl.value.trim()
     this.lStorageService.setToken(token);
     this.notification.openSnackBar(this.tlService.translate('Token updated!!', this.tlService.translate('Close')))
