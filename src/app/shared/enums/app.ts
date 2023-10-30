@@ -3,3 +3,8 @@ export enum STORAGE_KEY {
   TOKEN = 'token',
   LANG = 'lang'
 }
+
+export enum LANGUAGES {
+  ES = 'es',
+  EN = 'en'
+}
