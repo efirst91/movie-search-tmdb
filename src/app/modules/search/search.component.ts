@@ -12,7 +12,6 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {TranslocoModule, TranslocoService} from "@ngneat/transloco";
 
 import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
-import {AdminSearchService} from "@modules/search/services/admin-search.service";
 import {SearchInterface} from "@shared/models/search.interface";
 import {ResultInterface} from "@shared/models/result.interface";
 import {MovieInterface} from "@shared/models/movie.interface";
@@ -51,7 +50,6 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    public searchService: AdminSearchService,
     private storeService: SearchStoreService
   ) {
 
