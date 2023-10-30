@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {NotFoundComponent} from "@shared/components/not-found/not-found.component";
 import {SearchComponent} from "@modules/search/search.component";
 import {authGuard} from "@core/guards/auth.guard";
 
 const routes: Routes = [
+
   {
     path: 'search',
     canActivate: [authGuard],
@@ -16,13 +16,18 @@ const routes: Routes = [
     loadComponent: () => import('@modules/token-admin/token-admin.component').then(c => c.TokenAdminComponent)
   },
   {
+    path: 'pelicula/:id',
+    canActivate: [authGuard],
+    loadComponent: () => import('@modules/movie-details/movie-details.component').then(c => c.MovieDetailsComponent)
+  },
+  {
     path: '',
-    redirectTo: 'search',
+    redirectTo: '/search',
     pathMatch: 'full'
   },
   {
     path: '**',
-    component: NotFoundComponent
+    redirectTo: '/search'
   }
 
 
