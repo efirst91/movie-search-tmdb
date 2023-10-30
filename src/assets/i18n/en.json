@@ -1,1 +1,26 @@
-{}
+{
+  "Overview": "Overview",
+  "Release date": "Release date",
+  "Original language": "Original language",
+  "Vote average": "Vote average",
+  "Vote count": "Vote count",
+  "Popularity": "Popularity",
+  "Query": "Query",
+  "Name": "Name",
+  "Please insert a query": "Please insert a query",
+  "Year": "Year",
+  "Search": "Search",
+  "No result": "No result",
+  "Would yo like to search in other language": "Would yo like to search in other language",
+  "Ok": "Ok",
+  "Token": "Token",
+  "Ex. xwzasdasd": "Ex. xwzasdasd",
+  "Insert the new token value": "Insert the new token value",
+  "Token in required": "Token in required",
+  "Update token": "Update token",
+  "TMDB movie search test": "TMDB movie search test",
+  "Refresh token": "Refresh token",
+  "An error has occurred we are working on it": "An error has occurred we are working on it",
+  "Close": "Close",
+  "Token updated!!": "Token updated!!"
+}
