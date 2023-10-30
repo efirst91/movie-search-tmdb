@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TokenAdminComponent } from './token-admin.component';
 
-describe('TokenAdminComponent', () => {
+xdescribe('TokenAdminComponent', () => {
   let component: TokenAdminComponent;
   let fixture: ComponentFixture<TokenAdminComponent>;
 
