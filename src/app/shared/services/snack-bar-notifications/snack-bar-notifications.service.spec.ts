@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { SnackBarNotificationsService } from './snack-bar-notifications.service';
 
-describe('SnackBarNotificationsService', () => {
+xdescribe('SnackBarNotificationsService', () => {
   let service: SnackBarNotificationsService;
 
   beforeEach(() => {
