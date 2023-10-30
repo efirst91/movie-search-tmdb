@@ -1,0 +1,17 @@
+.movie-details {
+  .container {
+    max-width: 50rem;
+
+    @media (max-width: 959.98px) {
+      max-width: 80%;
+    }
+
+    .card-details {
+      background-color: whitesmoke;
+    }
+
+    .backdrop {
+      opacity: 0.5;
+    }
+  }
+}
