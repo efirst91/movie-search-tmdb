@@ -1,1 +1,19 @@
-<p>token-admin works!</p>
+<section class="token-admin d-flex flex-d-column">
+  <div class="input-value d-flex flex-d-column align-item-center">
+    <mat-label>{{'Token' | transloco}}</mat-label>
+    <mat-form-field class="input-token" appearance="outline">
+      <input type="string" matInput [formControl]="tokenControl" placeholder="{{'Ex. xwzasdasd' | transloco}}">
+      <mat-hint>{{'Insert the new token value' | transloco}}</mat-hint>
+      <mat-error *ngIf="tokenControl.hasError('required')">
+        {{'Token in required' | transloco}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="btn-update d-flex justify-center">
+    <button mat-raised-button color="primary"
+            [disabled]="tokenControl.hasError('required')"
+            aria-label="Update token access btn" (click)="onUpdateToken()">
+      {{'Update token' | transloco}}</button>
+  </div>
+</section>
