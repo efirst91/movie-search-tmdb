@@ -1,0 +1,29 @@
+.main-toolbar {
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .title-web,
+  .refresh-token {
+    @media (max-width: 599.98px) {
+      display: none;
+    }
+  }
+
+  .language-selector {
+    .btn-selector {
+      &.expand,
+      &.collapse {
+        .icon-selector-lang {
+          transition: transform 0.5s ease;
+        }
+      }
+
+      &.collapse {
+        .icon-selector-lang {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}

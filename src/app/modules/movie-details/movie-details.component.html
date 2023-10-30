@@ -1,0 +1,29 @@
+<section class="movie-details d-flex flex-d-row justify-center" *ngIf="details">
+  <div class="container">
+    <button mat-raised-button class="mt-2"
+            (click)="onBackToSearch()"
+            aria-label="Back to search value">
+      <span>{{'Back to search'}}</span>
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <mat-card class="card-details mt-2 mb-2">
+      <mat-card-header>
+        <img mat-card-avatar class="backdrop" [src]="url+ details.poster_path" alt="Poster image" >
+        <mat-card-title>{{details?.original_title}}</mat-card-title>
+        <mat-card-subtitle>{{details?.title}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="url+ details.backdrop_path" alt="Backdrop image">
+      <mat-card-content>
+        <p class="mt-2"><strong>{{'Overview' | transloco}} :</strong> {{details?.overview}}</p>
+        <div class="d-flex flex-d-column">
+          <span><strong>{{'Release date' | transloco}}:</strong>  {{details?.release_date}}</span>
+          <span><strong>{{'Original language' | transloco}}:</strong> {{details?.original_language}}</span>
+          <span><strong>{{'Vote average' | transloco}}:</strong> {{details?.vote_average}}</span>
+          <span><strong>{{'Vote count'| transloco}}:</strong> {{details?.vote_count}}</span>
+          <span><strong>{{'Popularity' | transloco}}:</strong> {{details?.popularity}}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+  font-size: 16px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  .d-flex {
+    display: flex;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .align-item-center {
+    align-items: center;
+  }
+
+  .flex-d-column {
+    flex-direction: column;
+  }
+
+  .flex-d-row {
+    flex-direction: row;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .btn-flags {
+    .mat-mdc-menu-item-text {
+      display: flex;
+    }
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .mt-2 {
+    margin-top: 2rem;
+  }
+
+  .mb-2 {
+    margin-bottom: 2rem;
+  }
+
+}

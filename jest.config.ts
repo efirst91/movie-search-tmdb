@@ -16,7 +16,12 @@ const config: Config = {
   coverageProvider: "v8",
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "@core/*": "<rootDir>/src/app/core/$1",
+    "@data-access/*": "<rootDir>/src/app/data-access/$1",
+    "@modules/*": "<rootDir>/src/app/modules/$1",
+    "@shared/*": "<rootDir>/src/app/shared/$1"
+  },
 
   // A preset that is used as a base for Jest's configuration
   preset: 'jest-preset-angular',

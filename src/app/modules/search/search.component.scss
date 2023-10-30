@@ -1,0 +1,35 @@
+.search-section {
+  margin-top: 2rem;
+
+  .form-search {
+    gap: 1rem;
+
+    @media (max-width: 599.98px) {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .search-btn {
+    height: 3.5rem;
+  }
+}
+
+.cards-result {
+  .wrapper-result {
+    max-width: 75rem;
+
+    & > div {
+      gap: 1rem;
+
+      @media (max-width: 1024px) {
+        flex-direction: column;
+      }
+
+      .linked-values {
+        text-decoration: none;
+        color: initial;
+      }
+    }
+  }
+}

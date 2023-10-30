@@ -1,0 +1,58 @@
+<section class="search-section">
+  <form [formGroup]="formSearch" class="form-search d-flex flex-d-row justify-center">
+    <mat-form-field class="query" appearance="outline">
+      <mat-label>{{'Query' | transloco}}</mat-label>
+      <input matInput formControlName="query"
+             placeholder="{{'Name' | transloco}}">
+      <mat-error *ngIf="formSearch.get('query')?.errors">
+        {{'Please insert a query' | transloco}}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="year" appearance="outline">
+      <mat-label>{{'Year' | transloco}}</mat-label>
+      <input type="number" matInput formControlName="year"
+             placeholder="{{'Year' | transloco}}">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            [disabled]="this.formSearch.get('query')?.hasError('required') ?? false"
+            class="search-btn"
+            aria-label="Search films"
+            (click)="onSearch()"> {{'Search' | transloco}}</button>
+  </form>
+</section>
+
+<section class="cards-result d-flex flex-d-row justify-center mt-2">
+  <div class="wrapper-result d-flex flex-d-column justify-center align-item-center">
+    <div class="d-flex flex-d-row flex-wrap mb-2">
+      <ng-container *ngIf="storeData?.data?.results?.length;else noResult">
+        <ng-container *ngFor="let item of storeData?.data?.results; let i = index">
+          <a class="linked-values" routerLink="/pelicula/{{item.id}}" (click)="onSelection(item)">
+           <app-movie-presentation [movie]="item"></app-movie-presentation>
+          </a>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #noResult>
+        <span>{{'No result' | transloco}}</span>
+        <div class="research" *ngIf="firstSearch && !storeData.data?.results?.length">
+          <span>{{'Would yo like to search in other language' | transloco}}</span>
+          <button mat-button color="accent" (click)="onResearch()">{{'Ok' | transloco}}</button>
+        </div>
+      </ng-template>
+    </div>
+
+    <mat-paginator
+      *ngIf="storeData.data?.results?.length"
+      class="movie paginator"
+      (page)="handlePageEvent($event)"
+      [length]="storeData?.data?.total_results ?? 0"
+      [showFirstLastButtons]="showFirstLastButtons"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="storeData?.data?.page ?? 1"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
+</section>
+

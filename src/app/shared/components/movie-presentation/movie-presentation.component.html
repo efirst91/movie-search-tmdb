@@ -1,0 +1,13 @@
+<mat-card class="presentation-card pointer">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{movie?.title ?? ''}}</mat-card-title>
+      <img mat-card-image class="img" [ngSrc]="url+movie?.poster_path" alt="Poster photo" width="400" height="320">
+    </mat-card-title-group>
+  </mat-card-header>
+
+  <mat-card-content class="content-card">
+    <span class="year-value"><strong>{{'Year'| transloco}} </strong>: {{movie?.release_date | date : "YYYY"}}</span>
+    <span><strong>{{'Vote average' | transloco}}</strong> : {{movie?.vote_average}}</span>
+  </mat-card-content>
+</mat-card>
