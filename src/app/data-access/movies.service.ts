@@ -32,7 +32,8 @@ export class MoviesService {
       }),
     )
 
-    // the api throw an error of cors, for this reason I use the mock json for now
+    // // the api throw an error of cors, for this reason I use the mock json for now
+    // the solution could be set a proxy configuration, but I don't have enough time at this moment with the deadline
     // return this.httpClient.get<ResultInterface<MovieInterface>>(this.url, {
     //   params
     // }).pipe(
