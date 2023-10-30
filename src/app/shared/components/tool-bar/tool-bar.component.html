@@ -1,0 +1,46 @@
+<mat-toolbar class="main-toolbar" >
+  <img class="pointer" (click)="onHome()" ngSrc="assets/images/toolbar.svg"
+       alt="toolbar image" width="154" height="20">
+  <span class="title-web">{{"TMDB movie search test" | transloco}}</span>
+
+
+  <span class="spacer"></span>
+
+  <button mat-raised-button color="primary"
+          matTooltip="Refres token"
+          aria-label="Refresh token" (click)="onRefreshToken()">
+    <span class="mat-caption refresh-token">{{"Refresh token" | transloco}}</span>
+    <mat-icon>token</mat-icon>
+  </button>
+
+  <div class="language-selector">
+    <button mat-icon-button [matMenuTriggerFor]="languageMenu"
+            class="btn-selector"
+            (click)="onSelect()"
+            aria-label="Button for switch between languages"
+            [ngClass]="!menuExpand ? 'expand' : 'collapse'"
+    >
+      <img *ngIf="activeLang===LANGUAGES.EN" ngSrc="assets/images/flags/en.svg" alt="English flag" width="24"
+           height="24">
+      <img *ngIf="activeLang===LANGUAGES.ES" ngSrc="assets/images/flags/es.svg" alt="Spanish flag" width="24"
+           height="24">
+      <mat-icon class="icon-selector-lang">keyboard_arrow_down</mat-icon>
+    </button>
+
+    <mat-menu #languageMenu="matMenu">
+      <button mat-menu-item aria-label="English selector"
+              class="btn-flags"
+              (click)="onChangeLanguage(LANGUAGES.EN)">
+        <img ngSrc="assets/images/flags/en.svg" alt="English flag" width="24" height="24">
+        <span>EN</span>
+      </button>
+
+      <button mat-menu-item aria-label="Spanish selector"
+              class="btn-flags"
+              (click)="onChangeLanguage(LANGUAGES.ES)">
+        <img ngSrc="assets/images/flags/es.svg" alt="Spanish flag" width="24" height="24">
+        <span>ES</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
