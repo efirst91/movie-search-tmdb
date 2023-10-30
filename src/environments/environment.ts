@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "https://developer.themoviedb.org/"
+  apiUrl: "https://api.themoviedb.org/",
+  imageBaseUrl: "https://image.tmdb.org/t/p/"
 };
