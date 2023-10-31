@@ -47,7 +47,7 @@
       *ngIf="storeData.data?.results?.length"
       class="movie paginator"
       (page)="handlePageEvent($event)"
-      [length]="storeData?.data?.total_results ?? 0"
+      [length]="storeData.data?.total_results ?? 1"
       [showFirstLastButtons]="showFirstLastButtons"
       [pageSizeOptions]="pageSizeOptions"
       [pageIndex]="storeData?.data?.page ?? 1"

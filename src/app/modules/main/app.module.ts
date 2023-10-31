@@ -12,7 +12,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule} from "@ngrx/effects";
 import {StoreModule} from "@ngrx/store";
 
-import {API_URL, IMAGE_BASE_URL} from "@shared/custom-tokens/custom-app-tokens";
+import {IMAGE_BASE_URL, PROXY_BASE_URL} from "@shared/custom-tokens/custom-app-tokens";
 import {environment} from "@env/environment";
 import {AppRoutingModule} from '@modules/main/app-routing.module';
 import {AppComponent} from '@modules/main/app.component';
@@ -27,6 +27,7 @@ import {LANGUAGES} from "@shared/enums/app";
 import {ROOT_REDUCERS} from "@shared/store/global.state";
 import {GlobalEffects} from "@shared/store/global.effect.service";
 import {GlobalHandlerService} from "@core/error/global-handler.service";
+import {HttpErrorInterceptorInterceptor} from "@core/interceptors/error/http-error-interceptor.interceptor";
 
 
 export const getBaseHref = (tLocoService: TranslocoService, lStorageService: LocalStorageService) => {
@@ -63,8 +64,8 @@ export function initializeApp(tLService: TranslocoService, lStorageService: Loca
   ],
   providers:[
     {
-      provide: API_URL,
-      useValue: environment.apiUrl
+      provide: PROXY_BASE_URL,
+      useValue: environment.proxyApiBase
     },
     {
       provide: IMAGE_BASE_URL,
@@ -88,6 +89,11 @@ export function initializeApp(tLService: TranslocoService, lStorageService: Loca
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorInterceptor,
       multi: true
     },
     {
