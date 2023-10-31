@@ -8,17 +8,17 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 
 import {TranslocoModule, TranslocoService} from "@ngneat/transloco";
+import {Observable} from "rxjs";
 
 import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
 import {SearchInterface} from "@shared/models/search.interface";
 import {ResultInterface} from "@shared/models/result.interface";
 import {MovieInterface} from "@shared/models/movie.interface";
 import {MoviePresentationComponent} from "@shared/components/movie-presentation/movie-presentation.component";
-import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {SearchStoreService} from "@shared/services/facades/search-store.service";
-import {Observable} from "rxjs";
 import {SearchInitialState} from "@shared/store/global.model.interface";
 import {LANGUAGES} from "@shared/enums/app";
 
@@ -144,7 +144,7 @@ export class SearchComponent implements OnInit {
 
   handlePageEvent(e: PageEvent): void {
     const search: SearchInterface = {
-      page: e.pageIndex + 1,
+      page: e.pageIndex,
       query: this.formSearch.get('query')?.value,
       year: this.formSearch.get('year')?.value
     }
