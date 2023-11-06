@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable, retry} from "rxjs";
+import {Observable} from "rxjs";
 
 import {SnackBarNotificationsService} from "@shared/services/snack-bar-notifications/snack-bar-notifications.service";
 import {SearchInterface} from "@shared/models/search.interface";
@@ -15,7 +15,7 @@ export class MoviesService {
   private readonly httpClient = inject(HttpClient)
   private readonly notification = inject(SnackBarNotificationsService);
   private readonly apiProxyUrlBase = inject(PROXY_BASE_URL);
-  private url = `${this.apiProxyUrlBase}3/search/movie`
+  private url = `${this.apiProxyUrlBase}3/search/movie//`
 
   getData(search: SearchInterface): Observable<ResultInterface<MovieInterface>> {
     let params = new HttpParams();
@@ -25,11 +25,6 @@ export class MoviesService {
 
     return this.httpClient.get<ResultInterface<MovieInterface>>(this.url, {
       params
-    }).pipe(
-      retry({
-        count: 1,
-        delay: 2000
-      }),
-    )
+    })
   }
 }
