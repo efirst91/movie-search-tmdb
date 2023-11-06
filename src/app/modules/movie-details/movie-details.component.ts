@@ -2,7 +2,7 @@ import {Component, inject, OnDestroy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from "@angular/router";
 
-import {Observable, Subject,  takeUntil} from "rxjs";
+import {Observable, Subject, takeUntil} from "rxjs";
 
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
@@ -16,6 +16,7 @@ import {MovieInterface} from "@shared/models/movie.interface";
 import {GlobalState} from "@shared/store/global.state";
 import * as selectors from "@shared/store/global.selector"
 import {IMAGE_BASE_URL} from "@shared/custom-tokens/custom-app-tokens";
+import {LANGUAGES} from "@shared/enums/app";
 
 @Component({
   selector: 'app-movie-details',
@@ -26,10 +27,11 @@ import {IMAGE_BASE_URL} from "@shared/custom-tokens/custom-app-tokens";
 })
 export class MovieDetailsComponent implements OnDestroy {
   storeMovieDetail$!: Observable<MovieInterface>;
-  details!: MovieInterface;
+  details?: MovieInterface;
   imageBaseUrl = inject(IMAGE_BASE_URL);
   url = `${this.imageBaseUrl}/original`;
   subjectDestroy$ = new Subject<void>();
+  LANGUAGE: typeof LANGUAGES = LANGUAGES;
 
   constructor(
     private store: Store<GlobalState>,
