@@ -20,7 +20,13 @@
   "Update token": "Update token",
   "TMDB movie search test": "TMDB movie search test",
   "Refresh token": "Refresh token",
-  "An error has occurred we are working on it": "An error has occurred we are working on it",
+  "An unexpected error has occurred, please contact with your support team": "An unexpected error has occurred, please contact with your support team",
   "Close": "Close",
-  "Token updated!!": "Token updated!!"
+  "An error has occurred with your token, pleas update it": "An error has occurred with your token, pleas update it",
+  "File not found, please review your api base url": "File not found, please review your api base url",
+  "An error has occurred with serve connection, please contact with your api provider": "An error has occurred with serve connection, please contact with your api provider",
+  "Can not get movies for the server": "Can not get movies for the server",
+  "Token updated!!": "Token updated!!",
+  "Cancel": "Cancel",
+  "An error has occurred we are working on it": "An error has occurred we are working on it"
 }
