@@ -2,7 +2,10 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{movie?.title ?? ''}}</mat-card-title>
-      <img mat-card-image class="img" [ngSrc]="url+movie?.poster_path" alt="Poster photo" width="400" height="320">
+      <img mat-card-image class="img" [ngSrc]="url+movie?.poster_path"
+           alt="Poster photo" width="400" height="320"
+           (error)="setDefault($event)"
+        >
     </mat-card-title-group>
   </mat-card-header>
 
