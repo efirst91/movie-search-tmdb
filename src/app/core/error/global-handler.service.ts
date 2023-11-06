@@ -12,10 +12,10 @@ export class GlobalHandlerService implements ErrorHandler {
   snackNotification = inject(SnackBarNotificationsService);
   tlService = inject(TranslocoService);
 
-  handleError(error: unknown): void {
+  handleError(error: unknown): void{
     this.zone.run(() => {
-      this.snackNotification.openSnackBar(this.tlService.translate('An error has occurred we are working on it'),
-        this.tlService.translate('Close'));
+      this.snackNotification.openSnackBar(this.tlService.translate('An unexpected error has occurred, please contact with your support team'),
+        this.tlService.translate('Close'),2000);
     });
     console.warn('Error detail ->', error)
   }
