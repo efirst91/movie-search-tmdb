@@ -9,9 +9,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 import {TranslocoModule, TranslocoService} from "@ngneat/transloco";
-import {Observable} from "rxjs";
+import { Observable, throwError} from "rxjs";
 
 import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
 import {SearchInterface} from "@shared/models/search.interface";
@@ -21,6 +22,8 @@ import {MoviePresentationComponent} from "@shared/components/movie-presentation/
 import {SearchStoreService} from "@shared/services/facades/search-store.service";
 import {SearchInitialState} from "@shared/store/global.model.interface";
 import {LANGUAGES} from "@shared/enums/app";
+import {SnackBarNotificationsService} from "@shared/services/snack-bar-notifications/snack-bar-notifications.service";
+
 
 @Component({
   selector: 'app-search',
@@ -31,7 +34,8 @@ import {LANGUAGES} from "@shared/enums/app";
     MatInputModule, MatButtonModule,
     TranslocoModule, MatDatepickerModule,
     MatNativeDateModule, MoviePresentationComponent,
-    MatPaginatorModule, RouterModule],
+    MatPaginatorModule, RouterModule,
+    MatProgressSpinnerModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
@@ -40,9 +44,11 @@ export class SearchComponent implements OnInit {
   formSearch!: FormGroup;
   showFirstLastButtons = true;
   pageSizeOptions = [20, 30, 40]
+  pageSize = 20;
   storeSearchData$!: Observable<SearchInitialState>;
   storeData!: SearchInitialState;
   firstSearch: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private tLocoService: TranslocoService,
@@ -50,7 +56,8 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private storeService: SearchStoreService
+    private storeService: SearchStoreService,
+    private notification: SnackBarNotificationsService
   ) {
 
     this.formSearch = this.fb.group({
@@ -105,22 +112,32 @@ export class SearchComponent implements OnInit {
 
   private initDataStore(): void {
     this.storeSearchData$ = this.storeService.storeSearchData$;
-    this.storeSearchData$.subscribe({
-      next: value => {
-        this.storeData = value;
+    this.storeSearchData$
+      .subscribe({
+        next: value => {
+          this.storeData = value;
 
-        if (value?.searchCriteria?.year || value?.searchCriteria?.query) {
-          this.formSearch.patchValue({
-            query: value.searchCriteria.query,
-            year: value.searchCriteria.year
-          })
-          this.formSearch.updateValueAndValidity();
+          if (value?.searchCriteria?.year || value?.searchCriteria?.query) {
+            this.formSearch.patchValue({
+              query: value.searchCriteria.query,
+              year: value.searchCriteria.year
+            })
+
+            this.loading = false;
+            this.formSearch.updateValueAndValidity();
+          }
+        },
+        error: err => {
+          const message = this.tLocoService.translate('Can not get movies for the server');
+          const action = this.tLocoService.translate('Close');
+          this.notification.openSnackBar(message, action, 6000);
+          return throwError(err)
         }
-      }
-    })
+      })
   }
 
   private getMovies(search: SearchInterface): void {
+    this.loading = true;
     this.storeService.search(search);
   }
 
@@ -138,19 +155,18 @@ export class SearchComponent implements OnInit {
       query: this.formSearch.get('query')?.value,
       year: this.formSearch.get('year')?.value
     }
-    this.getMovies(search);
     this.updateRoute(search);
   }
 
   handlePageEvent(e: PageEvent): void {
+    this.pageSize = e.pageSize;
+    let pageIndex = e.pageIndex === 0 ? 1 : e.pageIndex;
     const search: SearchInterface = {
-      page: e.pageIndex,
+      page: pageIndex,
       query: this.formSearch.get('query')?.value,
       year: this.formSearch.get('year')?.value
     }
 
-
-    this.getMovies(search);
     this.updateRoute(search);
   }
 
@@ -158,7 +174,6 @@ export class SearchComponent implements OnInit {
     const lang = this.lStorageService.getActiveLang() ?? this.tLocoService.getDefaultLang();
     const langDict: { [key: string]: () => void } = {
       es: () => {
-        debugger
         this.lStorageService.setActiveLang(LANGUAGES.EN);
         window.location.reload()
       },

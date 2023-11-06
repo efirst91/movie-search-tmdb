@@ -34,8 +34,9 @@
         </ng-container>
       </ng-container>
 
+      <mat-spinner *ngIf="loading" [diameter]="25" [mode]="'indeterminate'"></mat-spinner>
       <ng-template #noResult>
-        <span>{{'No result' | transloco}}</span>
+        <span *ngIf="!loading">{{'No result' | transloco}}</span>
         <div class="research" *ngIf="firstSearch && !storeData.data?.results?.length">
           <span>{{'Would yo like to search in other language' | transloco}}</span>
           <button mat-button color="accent" (click)="onResearch()">{{'Ok' | transloco}}</button>
@@ -46,10 +47,12 @@
     <mat-paginator
       *ngIf="storeData.data?.results?.length"
       class="movie paginator"
+      role="group"
       (page)="handlePageEvent($event)"
       [length]="storeData.data?.total_results ?? 1"
       [showFirstLastButtons]="showFirstLastButtons"
       [pageSizeOptions]="pageSizeOptions"
+      [pageSize]="pageSize"
       [pageIndex]="storeData?.data?.page ?? 1"
       aria-label="Select page">
     </mat-paginator>
