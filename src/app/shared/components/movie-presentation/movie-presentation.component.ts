@@ -14,6 +14,12 @@ import {TranslocoModule} from "@ngneat/transloco";
 })
 export class MoviePresentationComponent {
   imageBaseUrl = inject(IMAGE_BASE_URL);
-  url = `${this.imageBaseUrl}/original`;
+  url = `${this.imageBaseUrl}original`;
   @Input() movie!: MovieInterface;
+
+  setDefault($event:any){
+    if($event?.target){
+      $event.target.src= '../../../assets/images/not-found-img.png'
+    }
+  }
 }
