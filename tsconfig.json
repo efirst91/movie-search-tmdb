@@ -42,7 +42,9 @@
       "@env/*": [
         "src/environments/*"
       ]
-    }
+    },
+    "esModuleInterop": true,
+    "types": ["jest"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
