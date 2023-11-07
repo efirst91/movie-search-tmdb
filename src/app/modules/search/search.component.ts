@@ -59,8 +59,8 @@ export class SearchComponent implements OnInit {
   pageSize = 20;
   storeSearchData$!: Observable<SearchInitialState>;
   storeData!: SearchInitialState;
-  firstSearch: boolean = false;
-  loading: boolean = false;
+  firstSearch = false;
+  loading = false;
 
   constructor(
     private tLocoService: TranslocoService,
@@ -88,7 +88,7 @@ export class SearchComponent implements OnInit {
    */
   private routeChangeSubscription(): void {
     this.route.queryParams.subscribe((value) => {
-      let search: SearchInterface = {
+      const search: SearchInterface = {
         page: 1,
         query: '',
         year: new Date().getFullYear(),
@@ -140,7 +140,7 @@ export class SearchComponent implements OnInit {
   }
 
   private initFormValue(
-    query: string = '',
+    query = '',
     year: number = new Date().getFullYear(),
   ): void {
     this.formSearch.patchValue({
@@ -178,7 +178,7 @@ export class SearchComponent implements OnInit {
 
   handlePageEvent(e: PageEvent): void {
     this.pageSize = e.pageSize;
-    let pageIndex = e.pageIndex === 0 ? 1 : e.pageIndex;
+    const pageIndex = e.pageIndex === 0 ? 1 : e.pageIndex;
     const search: SearchInterface = {
       page: pageIndex,
       query: this.formSearch.get('query')?.value,

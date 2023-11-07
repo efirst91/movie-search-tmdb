@@ -22,8 +22,8 @@ export class SnackBarNotificationsService {
    * @example close
    */
   openSnackBar(
-    message: string = '',
-    action: string = 'close',
+    message = '',
+    action = 'close',
     duration = 5000,
     vP: MatSnackBarVerticalPosition = 'top',
     hP: MatSnackBarHorizontalPosition = 'right',

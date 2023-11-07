@@ -1,5 +1,5 @@
 <mat-toolbar class="main-toolbar" >
-  <img class="pointer" (click)="onHome()" ngSrc="assets/images/toolbar.svg"
+  <img class="pointer" (click)="onHome()" (keyup.enter)="onHome()" tabindex="0" ngSrc="assets/images/toolbar.svg"
        alt="toolbar image" width="154" height="20">
   <span class="title-web">{{"TMDB movie search test" | transloco}}</span>
 

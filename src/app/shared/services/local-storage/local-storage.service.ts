@@ -5,7 +5,6 @@ import { STORAGE_KEY } from '@shared/enums/app';
   providedIn: 'root',
 })
 export class LocalStorageService {
-
   setActiveLang(lang: string): void {
     localStorage.setItem(STORAGE_KEY.LANG, lang);
   }

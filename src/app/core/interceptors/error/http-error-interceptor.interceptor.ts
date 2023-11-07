@@ -5,6 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpErrorResponse,
+  HttpStatusCode,
 } from '@angular/common/http';
 import {
   EMPTY,
@@ -33,21 +34,24 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
       retryWhen((errors: Observable<HttpErrorResponse>) =>
         errors.pipe(
           mergeMap((error, index) => {
-            switch (true) {
-              case error.status === 401:
+            let message = '';
+            if (index === 0 && error.status !== HttpStatusCode.Unauthorized) {
+              // Retry the request immediately for the first error
+              return this.retryRequest(error);
+            }
+
+            switch (error.status) {
+              case HttpStatusCode.Unauthorized:
                 return this.handle401Error(error);
 
-              case error.status === 404:
+              case HttpStatusCode.NotFound:
                 return this.handle404Error(error);
 
-              case error.status === 500:
+              case HttpStatusCode.InternalServerError:
                 return this.handle500Error(error);
 
-              case index === 0:
-                return this.retryRequest(error);
-
               default:
-                const message = error.error.status_message;
+                message = error.error.status_message;
                 return throwError(() => new Error(message));
             }
           }),

@@ -30,7 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class ToolBarComponent {
   activeLang: string;
   LANGUAGES: typeof LANGUAGES = LANGUAGES;
-  menuExpand: boolean = false;
+  menuExpand = false;
 
   constructor(
     private tlService: TranslocoService,

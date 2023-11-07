@@ -21,6 +21,7 @@ export class GlobalEffects {
             actions.searchSuccess({ criteria: action.search, data: response }),
           ),
           catchError((err) => {
+            console.error(err);
             const errorMsg = this.tlService.translate(
               'Can´t load the movies withe the specific search, ' +
                 'please review your search query',
