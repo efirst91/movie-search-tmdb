@@ -12,7 +12,7 @@ import {MatPaginatorModule, PageEvent} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 import {TranslocoModule, TranslocoService} from "@ngneat/transloco";
-import { Observable, throwError} from "rxjs";
+import { Observable} from "rxjs";
 
 import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
 import {SearchInterface} from "@shared/models/search.interface";
@@ -104,6 +104,7 @@ export class SearchComponent implements OnInit {
         }
 
         if (pageFlag || queryFlag || yearFlag) {
+          this.initFormValue(search.query, search.year);
           this.getMovies(search);
         }
       }
@@ -126,14 +127,16 @@ export class SearchComponent implements OnInit {
             this.loading = false;
             this.formSearch.updateValueAndValidity();
           }
-        },
-        error: err => {
-          const message = this.tLocoService.translate('Can not get movies for the server');
-          const action = this.tLocoService.translate('Close');
-          this.notification.openSnackBar(message, action, 6000);
-          return throwError(err)
         }
       })
+  }
+
+  private initFormValue(query: string = '', year: number = new Date().getFullYear()): void {
+    this.formSearch.patchValue({
+      query: query,
+      year: year
+    });
+    this.formSearch.updateValueAndValidity();
   }
 
   private getMovies(search: SearchInterface): void {

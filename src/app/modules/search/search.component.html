@@ -4,7 +4,7 @@
       <mat-label>{{'Query' | transloco}}</mat-label>
       <input matInput formControlName="query"
              placeholder="{{'Name' | transloco}}">
-      <mat-error *ngIf="formSearch.get('query')?.errors">
+      <mat-error *ngIf="formSearch?.get('query')?.errors">
         {{'Please insert a query' | transloco}}
       </mat-error>
     </mat-form-field>
@@ -16,7 +16,7 @@
     </mat-form-field>
 
     <button mat-raised-button color="primary"
-            [disabled]="this.formSearch.get('query')?.hasError('required') ?? false"
+            [disabled]="this.formSearch?.get('query')?.hasError('required') ?? false"
             class="search-btn"
             aria-label="Search films"
             (click)="onSearch()"> {{'Search' | transloco}}</button>
