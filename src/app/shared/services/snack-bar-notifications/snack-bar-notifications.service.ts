@@ -26,7 +26,7 @@ export class SnackBarNotificationsService {
     action = 'close',
     duration = 5000,
     vP: MatSnackBarVerticalPosition = 'top',
-    hP: MatSnackBarHorizontalPosition = 'right',
+    hP: MatSnackBarHorizontalPosition = 'right'
   ) {
     const newConfig = new MatSnackBarConfig();
     newConfig.duration = duration;

@@ -15,10 +15,10 @@ export class GlobalHandlerService implements ErrorHandler {
     this.zone.run(() => {
       this.snackNotification.openSnackBar(
         this.tlService.translate(
-          'An unexpected error has occurred, please contact with your support team',
+          'An unexpected error has occurred, please contact with your support team'
         ),
         this.tlService.translate('Close'),
-        2000,
+        2000
       );
     });
     console.warn('Error detail ->', error);

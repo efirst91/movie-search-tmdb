@@ -15,7 +15,7 @@ export class HeaderInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const token = this.lStorageService.getToken();
     const lang = this.lStorageService.getActiveLang();

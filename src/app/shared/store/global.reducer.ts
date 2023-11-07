@@ -42,7 +42,7 @@ export const initialMovieDetail: MovieDetailsInitialState = {
 
 export const searchReducer = createReducer(
   initialSearchState,
-  on(actions.search, (state) => {
+  on(actions.search, state => {
     return { ...state, loading: true };
   }),
   on(actions.searchSuccess, (state, { criteria, data }) => {
@@ -59,7 +59,7 @@ export const searchReducer = createReducer(
       loading: false,
       message: message,
     };
-  }),
+  })
 );
 
 export const movieDetailReducer = createReducer(
@@ -69,5 +69,5 @@ export const movieDetailReducer = createReducer(
       ...state,
       movie: movie,
     };
-  }),
+  })
 );

@@ -35,7 +35,7 @@ export class ToolBarComponent {
   constructor(
     private tlService: TranslocoService,
     private lStorageService: LocalStorageService,
-    private router: Router,
+    private router: Router
   ) {
     this.activeLang = this.tlService.getActiveLang();
   }

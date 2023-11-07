@@ -42,14 +42,14 @@ import { HttpErrorInterceptorInterceptor } from '@core/interceptors/error/http-e
 
 export const getBaseHref = (
   tLocoService: TranslocoService,
-  lStorageService: LocalStorageService,
+  lStorageService: LocalStorageService
 ) => {
   return lStorageService.getActiveLang() ?? tLocoService.getDefaultLang();
 };
 
 export function initializeApp(
   tLService: TranslocoService,
-  lStorageService: LocalStorageService,
+  lStorageService: LocalStorageService
 ) {
   const langExist = lStorageService.getActiveLang();
   tLService.setActiveLang(langExist ?? LANGUAGES.EN);

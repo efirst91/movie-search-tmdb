@@ -11,10 +11,10 @@ export const selectFeatureMovie = (state: GlobalState) =>
 
 export const selectData = createSelector(
   selectFeatureSearch,
-  (state: SearchInitialState) => state,
+  (state: SearchInitialState) => state
 );
 
 export const selectMovieDetail = createSelector(
   selectFeatureMovie,
-  (state: MovieDetailsInitialState) => state.movie,
+  (state: MovieDetailsInitialState) => state.movie
 );

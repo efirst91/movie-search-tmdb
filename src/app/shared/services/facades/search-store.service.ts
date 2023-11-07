@@ -19,7 +19,7 @@ export class SearchStoreService {
   constructor(private store: Store<GlobalState>) {
     this.storeSearchData$ = this.store.pipe(select(selectors.selectData));
     this.storeMovieDetail$ = this.store.pipe(
-      select(selectors.selectMovieDetail),
+      select(selectors.selectMovieDetail)
     );
   }
 

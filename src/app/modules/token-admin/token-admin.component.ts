@@ -38,7 +38,7 @@ export class TokenAdminComponent {
     private notification: SnackBarNotificationsService,
     private tlService: TranslocoService,
     private router: Router,
-    private ngZone: NgZone,
+    private ngZone: NgZone
   ) {
     this.tokenControl = new FormControl<string | null>(null, [
       Validators.required,
@@ -51,7 +51,7 @@ export class TokenAdminComponent {
     this.lStorageService.setToken(token);
     this.notification.openSnackBar(
       this.tlService.translate('Token updated!!'),
-      this.tlService.translate('Close'),
+      this.tlService.translate('Close')
     );
     this.ngZone.run(() => {
       this.router.navigate(['/search']).then();

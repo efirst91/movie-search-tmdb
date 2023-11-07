@@ -28,7 +28,7 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler,
+    next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       retryWhen((errors: Observable<HttpErrorResponse>) =>
@@ -54,15 +54,15 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
                 message = error.error.status_message;
                 return throwError(() => new Error(message));
             }
-          }),
-        ),
-      ),
+          })
+        )
+      )
     );
   }
 
   private handle401Error(error: HttpErrorResponse): Observable<any> {
     const message = this.translate.translate(
-      'An error has occurred with your token, pleas update it',
+      'An error has occurred with your token, pleas update it'
     );
     const action = this.translate.translate('Close');
     this.router.navigate(['/token-acceso']).then();
@@ -72,7 +72,7 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
 
   private handle404Error(error: HttpErrorResponse): Observable<any> {
     const message = this.translate.translate(
-      'File not found, please review your api base url',
+      'File not found, please review your api base url'
     );
     const action = this.translate.translate('Close');
     this.notification.openSnackBar(message, action);
@@ -81,7 +81,7 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
 
   private handle500Error(error: HttpErrorResponse): Observable<any> {
     const message = this.translate.translate(
-      'An error has occurred with serve connection, please contact with your api provider',
+      'An error has occurred with serve connection, please contact with your api provider'
     );
     const action = this.translate.translate('Close');
     this.notification.openSnackBar(message, action);

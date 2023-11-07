@@ -69,7 +69,7 @@ export class SearchComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private storeService: SearchStoreService,
-    private notification: SnackBarNotificationsService,
+    private notification: SnackBarNotificationsService
   ) {
     this.formSearch = this.fb.group({
       query: ['', Validators.required],
@@ -87,7 +87,7 @@ export class SearchComponent implements OnInit {
    * @private
    */
   private routeChangeSubscription(): void {
-    this.route.queryParams.subscribe((value) => {
+    this.route.queryParams.subscribe(value => {
       const search: SearchInterface = {
         page: 1,
         query: '',
@@ -123,7 +123,7 @@ export class SearchComponent implements OnInit {
   private initDataStore(): void {
     this.storeSearchData$ = this.storeService.storeSearchData$;
     this.storeSearchData$.subscribe({
-      next: (value) => {
+      next: value => {
         this.storeData = value;
 
         if (value?.searchCriteria?.year || value?.searchCriteria?.query) {
@@ -141,7 +141,7 @@ export class SearchComponent implements OnInit {
 
   private initFormValue(
     query = '',
-    year: number = new Date().getFullYear(),
+    year: number = new Date().getFullYear()
   ): void {
     this.formSearch.patchValue({
       query: query,

@@ -41,13 +41,13 @@ export class MovieDetailsComponent implements OnDestroy {
 
   constructor(
     private store: Store<GlobalState>,
-    private router: Router,
+    private router: Router
   ) {
     this.storeMovieDetail$ = this.store.pipe(
-      select(selectors.selectMovieDetail),
+      select(selectors.selectMovieDetail)
     );
     this.storeMovieDetail$.pipe(takeUntil(this.subjectDestroy$)).subscribe({
-      next: (value) => (this.details = value),
+      next: value => (this.details = value),
     });
   }
 

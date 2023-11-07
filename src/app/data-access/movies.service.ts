@@ -18,7 +18,7 @@ export class MoviesService {
   private url = `${this.apiProxyUrlBase}3/search/movie`;
 
   getData(
-    search: SearchInterface,
+    search: SearchInterface
   ): Observable<ResultInterface<MovieInterface>> {
     let params = new HttpParams();
     params = params.set('query', search.query);

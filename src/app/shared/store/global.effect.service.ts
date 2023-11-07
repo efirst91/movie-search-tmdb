@@ -15,30 +15,30 @@ export class GlobalEffects {
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(actions.search),
-      mergeMap((action) =>
+      mergeMap(action =>
         this.moviesService.getData(action.search).pipe(
-          map((response) =>
-            actions.searchSuccess({ criteria: action.search, data: response }),
+          map(response =>
+            actions.searchSuccess({ criteria: action.search, data: response })
           ),
-          catchError((err) => {
+          catchError(err => {
             console.error(err);
             const errorMsg = this.tlService.translate(
               'Can´t load the movies withe the specific search, ' +
-                'please review your search query',
+                'please review your search query'
             );
             const actionMsg = this.tlService.translate('Cancel');
             this.notificationS.openSnackBar(errorMsg, actionMsg, 6000);
             return EMPTY;
-          }),
-        ),
-      ),
-    ),
+          })
+        )
+      )
+    )
   );
 
   constructor(
     private actions$: Actions,
     private moviesService: MoviesService,
     private tlService: TranslocoService,
-    private notificationS: SnackBarNotificationsService,
+    private notificationS: SnackBarNotificationsService
   ) {}
 }

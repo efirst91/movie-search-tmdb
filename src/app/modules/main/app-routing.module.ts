@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'token-acceso',
     loadComponent: () =>
       import('@modules/token-admin/token-admin.component').then(
-        (c) => c.TokenAdminComponent,
+        c => c.TokenAdminComponent
       ),
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () =>
       import('@modules/movie-details/movie-details.component').then(
-        (c) => c.MovieDetailsComponent,
+        c => c.MovieDetailsComponent
       ),
   },
   {
