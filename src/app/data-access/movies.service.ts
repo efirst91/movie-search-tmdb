@@ -15,7 +15,7 @@ export class MoviesService {
   private readonly httpClient = inject(HttpClient)
   private readonly notification = inject(SnackBarNotificationsService);
   private readonly apiProxyUrlBase = inject(PROXY_BASE_URL);
-  private url = `${this.apiProxyUrlBase}3/search/movie/`
+  private url = `${this.apiProxyUrlBase}3/search/movie`
 
   getData(search: SearchInterface): Observable<ResultInterface<MovieInterface>> {
     let params = new HttpParams();
