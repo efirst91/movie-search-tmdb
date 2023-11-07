@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "start:proxy": "ng serve --proxy-config proxy.conf.json",
     "i18n:extract": "transloco-keys-manager extract",
     "watch": "ng build --watch --configuration development",
     "build:prod": "ng build --prod && npm run transloco:optimize",
