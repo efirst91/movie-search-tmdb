@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SnackBarNotificationsService } from './snack-bar-notifications.service';
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 xdescribe('SnackBarNotificationsService', () => {
   let service: SnackBarNotificationsService;
@@ -26,5 +26,4 @@ xdescribe('SnackBarNotificationsService', () => {
 
     expect(openSpy).toHaveBeenCalledWith('', 'close', 5000, 'top', 'right');
   });
-
 });

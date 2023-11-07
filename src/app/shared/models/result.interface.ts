@@ -1,6 +1,6 @@
-export interface ResultInterface<T>{
-  page:          number;
-  results?:       T[];
-  total_pages:   number;
+export interface ResultInterface<T> {
+  page: number;
+  results?: T[];
+  total_pages: number;
   total_results: number;
 }

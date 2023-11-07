@@ -4,11 +4,7 @@
     {
       "adult": false,
       "backdrop_path": "/vv5a8u6e40kyH0Hp6HuamAgzRai.jpg",
-      "genre_ids": [
-        12,
-        14,
-        28
-      ],
+      "genre_ids": [12, 14, 28],
       "id": 58,
       "original_language": "en",
       "original_title": "Pirates of the Caribbean: Dead Man's Chest",
@@ -24,11 +20,7 @@
     {
       "adult": false,
       "backdrop_path": "/wQ0r0JRs7elHSKg1SFtdWdKTYKi.jpg",
-      "genre_ids": [
-        12,
-        28,
-        14
-      ],
+      "genre_ids": [12, 28, 14],
       "id": 1865,
       "original_language": "en",
       "original_title": "Pirates of the Caribbean: On Stranger Tides",
@@ -44,11 +36,7 @@
     {
       "adult": false,
       "backdrop_path": "/kPcHuPYqzkSo4bmPHtH82GaeEgX.jpg",
-      "genre_ids": [
-        12,
-        14,
-        28
-      ],
+      "genre_ids": [12, 14, 28],
       "id": 285,
       "original_language": "en",
       "original_title": "Pirates of the Caribbean: At World's End",
@@ -64,11 +52,7 @@
     {
       "adult": false,
       "backdrop_path": "/wW7Wt5bXzPy4VOEE4LTIUDyDgBo.jpg",
-      "genre_ids": [
-        12,
-        14,
-        28
-      ],
+      "genre_ids": [12, 14, 28],
       "id": 22,
       "original_language": "en",
       "original_title": "Pirates of the Caribbean: The Curse of the Black Pearl",
@@ -84,11 +68,7 @@
     {
       "adult": false,
       "backdrop_path": "/7C921eWK06n12c1miRXnYoEu5Yv.jpg",
-      "genre_ids": [
-        12,
-        28,
-        14
-      ],
+      "genre_ids": [12, 28, 14],
       "id": 166426,
       "original_language": "en",
       "original_title": "Pirates of the Caribbean: Dead Men Tell No Tales",
@@ -104,12 +84,7 @@
     {
       "adult": false,
       "backdrop_path": "/eCa0lE8q6r9zf18jRkraDdOvWOr.jpg",
-      "genre_ids": [
-        12,
-        18,
-        10749,
-        28
-      ],
+      "genre_ids": [12, 18, 10749, 28],
       "id": 63617,
       "original_language": "en",
       "original_title": "Reap the Wild Wind",
@@ -125,11 +100,7 @@
     {
       "adult": false,
       "backdrop_path": "/399ujcflKuf3mTysuZuQtKKbBk0.jpg",
-      "genre_ids": [
-        12,
-        18,
-        10749
-      ],
+      "genre_ids": [12, 18, 10749],
       "id": 97735,
       "original_language": "en",
       "original_title": "The Spanish Main",

@@ -1,14 +1,23 @@
-import {inject, Injectable} from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpErrorResponse
+  HttpInterceptor,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import {EMPTY, mergeMap, Observable,  retryWhen, take, throwError, timer} from 'rxjs';
-import {Router} from "@angular/router";
-import {SnackBarNotificationsService} from "@shared/services/snack-bar-notifications/snack-bar-notifications.service";
-import {TranslocoService} from "@ngneat/transloco";
+import {
+  EMPTY,
+  mergeMap,
+  Observable,
+  retryWhen,
+  take,
+  throwError,
+  timer,
+} from 'rxjs';
+import { Router } from '@angular/router';
+import { SnackBarNotificationsService } from '@shared/services/snack-bar-notifications/snack-bar-notifications.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Injectable()
 export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
@@ -16,8 +25,10 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
   notification = inject(SnackBarNotificationsService);
   translate = inject(TranslocoService);
 
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler,
+  ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       retryWhen((errors: Observable<HttpErrorResponse>) =>
         errors.pipe(
@@ -39,14 +50,16 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
                 const message = error.error.status_message;
                 return throwError(() => new Error(message));
             }
-          })
-        )
+          }),
+        ),
       ),
     );
   }
 
   private handle401Error(error: HttpErrorResponse): Observable<any> {
-    const message = this.translate.translate('An error has occurred with your token, pleas update it');
+    const message = this.translate.translate(
+      'An error has occurred with your token, pleas update it',
+    );
     const action = this.translate.translate('Close');
     this.router.navigate(['/token-acceso']).then();
     this.notification.openSnackBar(message, action);
@@ -54,14 +67,18 @@ export class HttpErrorInterceptorInterceptor implements HttpInterceptor {
   }
 
   private handle404Error(error: HttpErrorResponse): Observable<any> {
-    const message = this.translate.translate('File not found, please review your api base url');
+    const message = this.translate.translate(
+      'File not found, please review your api base url',
+    );
     const action = this.translate.translate('Close');
     this.notification.openSnackBar(message, action);
     return EMPTY;
   }
 
   private handle500Error(error: HttpErrorResponse): Observable<any> {
-    const message = this.translate.translate('An error has occurred with serve connection, please contact with your api provider');
+    const message = this.translate.translate(
+      'An error has occurred with serve connection, please contact with your api provider',
+    );
     const action = this.translate.translate('Close');
     this.notification.openSnackBar(message, action);
     return EMPTY;

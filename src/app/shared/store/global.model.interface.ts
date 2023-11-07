@@ -1,6 +1,6 @@
-import {SearchInterface} from "@shared/models/search.interface";
-import {ResultInterface} from "@shared/models/result.interface";
-import {MovieInterface} from "@shared/models/movie.interface";
+import { SearchInterface } from '@shared/models/search.interface';
+import { ResultInterface } from '@shared/models/result.interface';
+import { MovieInterface } from '@shared/models/movie.interface';
 
 export interface SearchInitialState {
   searchCriteria: SearchInterface;
@@ -10,5 +10,5 @@ export interface SearchInitialState {
 }
 
 export interface MovieDetailsInitialState {
-  movie: MovieInterface
+  movie: MovieInterface;
 }

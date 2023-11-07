@@ -1,13 +1,10 @@
-import {Injectable} from '@angular/core';
-import {STORAGE_KEY} from "@shared/enums/app";
+import { Injectable } from '@angular/core';
+import { STORAGE_KEY } from '@shared/enums/app';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
-
-  constructor() {
-  }
 
   setActiveLang(lang: string): void {
     localStorage.setItem(STORAGE_KEY.LANG, lang);

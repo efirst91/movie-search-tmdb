@@ -8,7 +8,7 @@ xdescribe('ToolBarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ToolBarComponent]
+      imports: [ToolBarComponent],
     });
     fixture = TestBed.createComponent(ToolBarComponent);
     component = fixture.componentInstance;

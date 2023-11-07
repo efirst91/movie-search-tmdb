@@ -1,21 +1,21 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NgZone} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Router} from "@angular/router";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgZone } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { TranslocoService} from "@ngneat/transloco";
+import { TranslocoService } from '@ngneat/transloco';
 
-import {TokenAdminComponent} from './token-admin.component';
-import {TranslocoRootModule} from "@config/i18n/transloco-root.module";
-import {LocalStorageService} from "@shared/services/local-storage/local-storage.service";
-import {SnackBarNotificationsService} from "@shared/services/snack-bar-notifications/snack-bar-notifications.service";
+import { TokenAdminComponent } from './token-admin.component';
+import { TranslocoRootModule } from '@config/i18n/transloco-root.module';
+import { LocalStorageService } from '@shared/services/local-storage/local-storage.service';
+import { SnackBarNotificationsService } from '@shared/services/snack-bar-notifications/snack-bar-notifications.service';
 
 describe('TokenAdminComponent', () => {
   let component: TokenAdminComponent;
@@ -29,11 +29,15 @@ describe('TokenAdminComponent', () => {
     TestBed.configureTestingModule({
       declarations: [],
       imports: [
-        CommonModule,BrowserAnimationsModule, MatInputModule,
-        MatButtonModule, ReactiveFormsModule,
-        FormsModule, TranslocoRootModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        TranslocoRootModule,
         MatSnackBarModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
       ],
       providers: [
         TokenAdminComponent,
@@ -42,7 +46,7 @@ describe('TokenAdminComponent', () => {
         SnackBarNotificationsService,
         MatSnackBar,
         Router,
-      ]
+      ],
     });
 
     fixture = TestBed.createComponent(TokenAdminComponent);
@@ -61,9 +65,15 @@ describe('TokenAdminComponent', () => {
     const token = 'testToken';
     component.tokenControl = new FormControl(token);
 
-    const setTokenSpy = jest.spyOn(localStorageService, 'setToken').mockReturnValue(undefined);
-    const openSnackBarSpy = jest.spyOn(snackBarService, 'openSnackBar').mockReturnValue(undefined);
-    const navigateSpy = jest.spyOn(router, 'navigate').mockReturnValue(Promise.resolve(true));
+    const setTokenSpy = jest
+      .spyOn(localStorageService, 'setToken')
+      .mockReturnValue(undefined);
+    const openSnackBarSpy = jest
+      .spyOn(snackBarService, 'openSnackBar')
+      .mockReturnValue(undefined);
+    const navigateSpy = jest
+      .spyOn(router, 'navigate')
+      .mockReturnValue(Promise.resolve(true));
 
     component.onUpdateToken();
 

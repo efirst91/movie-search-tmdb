@@ -1,10 +1,6 @@
-import {
-  provideTransloco,
-  TranslocoModule
-} from '@ngneat/transloco';
-import {isDevMode, NgModule} from '@angular/core';
-import {TranslocoHttpLoader} from './transloco-loader';
-
+import { provideTransloco, TranslocoModule } from '@ngneat/transloco';
+import { isDevMode, NgModule } from '@angular/core';
+import { TranslocoHttpLoader } from './transloco-loader';
 
 @NgModule({
   exports: [TranslocoModule],
@@ -17,12 +13,11 @@ import {TranslocoHttpLoader} from './transloco-loader';
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
         flatten: {
-          aot: !isDevMode()
-        }
+          aot: !isDevMode(),
+        },
       },
-      loader: TranslocoHttpLoader
-    })
+      loader: TranslocoHttpLoader,
+    }),
   ],
 })
-export class TranslocoRootModule {
-}
+export class TranslocoRootModule {}

@@ -8,7 +8,7 @@ xdescribe('MovieDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MovieDetailsComponent]
+      imports: [MovieDetailsComponent],
     });
     fixture = TestBed.createComponent(MovieDetailsComponent);
     component = fixture.componentInstance;
