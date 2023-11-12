@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,7 +22,6 @@ describe('TokenAdminComponent', () => {
   let localStorageService: LocalStorageService;
   let snackBarService: SnackBarNotificationsService;
   let router: Router;
-  let ngZone: NgZone;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,7 +52,6 @@ describe('TokenAdminComponent', () => {
     localStorageService = TestBed.inject(LocalStorageService);
     snackBarService = TestBed.inject(SnackBarNotificationsService);
     router = TestBed.inject(Router);
-    ngZone = TestBed.inject(NgZone);
   });
 
   it('should create', () => {
