@@ -65,9 +65,7 @@ describe('TokenAdminComponent', () => {
     const token = 'testToken';
     component.tokenControl = new FormControl(token);
 
-    const setTokenSpy = jest
-      .spyOn(localStorageService, 'setToken')
-      .mockReturnValue(undefined);
+    const setTokenSpy = jest.spyOn(localStorageService, 'setToken');
     const openSnackBarSpy = jest
       .spyOn(snackBarService, 'openSnackBar')
       .mockReturnValue(undefined);
@@ -77,11 +75,14 @@ describe('TokenAdminComponent', () => {
 
     component.onUpdateToken();
 
+    fixture.detectChanges();
+    const tokenStore = localStorageService.getToken();
+
+    expect(tokenStore).toBe(token);
     expect(setTokenSpy).toHaveBeenCalledWith(token);
     expect(openSnackBarSpy).toHaveBeenCalledWith('Token updated!!', 'Close');
     expect(navigateSpy).toHaveBeenCalled();
 
-    setTokenSpy.mockRestore();
     openSnackBarSpy.mockRestore();
     navigateSpy.mockRestore();
   });
